@@ -1,7 +1,7 @@
 
 
 // create 3 data_set
-var data5 = [
+var data4 = [
    {group: "2016", value: 126291},
    {group: "2017", value: 60176},
    {group: "2018", value: 50461},
@@ -9,7 +9,7 @@ var data5 = [
    
 ];
 
-var data6 = [
+var data5 = [
    {group: "2016", value: 163206},
    {group: "2017", value: 75188},
    {group: "2018", value: 81337},
@@ -22,12 +22,12 @@ var data6 = [
 
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 470 - margin.left - margin.right,
+    width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 
 // append the svg object to the body of the page
-var svg = d3.select("#departure")
+var svg9 = d3.select("#departure")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -35,19 +35,19 @@ var svg = d3.select("#departure")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+//var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
 // Initialize the X axis
 var x = d3.scaleBand()
   .range([ 0, width ])
   .padding(0.2);
-var xAxis = svg.append("g")
+var xAxis = svg9.append("g")
   .attr("transform", "translate(0," + height + ")")
 
 // Initialize the Y axis
 var y = d3.scaleLinear()
   .range([ height, 0]);
-var yAxis = svg.append("g")
+var yAxis = svg9.append("g")
   .attr("class", "myYaxis")
 
 
@@ -63,7 +63,7 @@ function update(data) {
   yAxis.transition().duration(1000).call(d3.axisLeft(y));
 
   // Create the u variable
-  var u = svg.selectAll("rect")
+  var u = svg9.selectAll("rect")
     .data(data)
 
   u
@@ -77,7 +77,7 @@ function update(data) {
       .attr("y", function(d) { return y(d.value); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", "blue")
+      .attr("fill", "#5F9EA0")
   u.on("mouseover", function(d){
             tooltip
               .style("left", d3.event.pageX - 50 + "px")
@@ -94,5 +94,5 @@ function update(data) {
 }
 
 // Initialize the plot with the first dataset
-update(data1)
+update(data4)
 

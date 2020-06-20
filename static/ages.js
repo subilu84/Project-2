@@ -45,51 +45,54 @@ var svg2 = d3.select("#ages")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Initialize the X axis
-var x = d3.scaleBand()
+var x2 = d3.scaleBand()
   .range([ 0, width ])
   .padding(0.2);
-var xAxis = svg2.append("g")
+var xAxis2 = svg2.append("g")
   .attr("transform", "translate(0," + height + ")")
 
 // Initialize the Y axis
-var y = d3.scaleLinear()
+var y2 = d3.scaleLinear()
   .range([ height, 0]);
-var yAxis = svg2.append("g")
-  .attr("class", "myYaxis")
+var yAxis2 = svg2.append("g")
+  .attr("class", "myYaxis2")
+
+
+
 
 
 // A function that create / update the plot for a given variable:
-function update(data) {
+function update2(data) {
 
   // Update the X axis
-  x.domain(data.map(function(d) { return d.group; }))
-  xAxis.call(d3.axisBottom(x))
+  x2.domain(data.map(function(d) { return d.group; }))
+  xAxis2.call(d3.axisBottom(x2))
 
   // Update the Y axis
-  y.domain([0, d3.max(data, function(d) { return d.value }) ]);
-  yAxis.transition().duration(1000).call(d3.axisLeft(y));
+  y2.domain([0, d3.max(data, function(d) { return d.value }) ]);
+  yAxis2.transition().duration(1000).call(d3.axisLeft(y2));
 
   // Create the u variable
-  var u = svg2.selectAll("rect")
+  var u2 = svg2.selectAll("rect")
     .data(data)
 
-  u
+  u2
     .enter()
     .append("rect") // Add a new rect for each new elements
-    .merge(u) // get the already existing elements as well
+    .merge(u2) // get the already existing elements as well
     .transition() // and apply changes to all of them
     .duration(1000)
-      .attr("x", function(d) { return x(d.group); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.value); })
+      .attr("x", function(d) { return x2(d.group); })
+      .attr("y", function(d) { return y2(d.value); })
+      .attr("width", x2.bandwidth())
+      .attr("height", function(d) { return height - y2(d.value); })
       .attr("fill", "#5F9EA0")
 
   // If less group in the new dataset, I delete the ones not in use anymore
-  u
+  u2
     .exit()
     .remove()
 }
 
 // Initialize the plot with the first dataset
-update(data1)
+update2(data1)
