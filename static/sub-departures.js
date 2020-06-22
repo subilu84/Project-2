@@ -35,7 +35,7 @@ var svg9 = d3.select("#departure")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-//var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
 // Initialize the X axis
 var x = d3.scaleBand()
@@ -77,7 +77,7 @@ function update(data) {
       .attr("y", function(d) { return y(d.value); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", "#5F9EA0")
+      .attr("fill", "blue")
   u.on("mouseover", function(d){
             tooltip
               .style("left", d3.event.pageX - 50 + "px")

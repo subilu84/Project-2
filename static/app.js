@@ -23,7 +23,7 @@ var svg5 = d3.select("#departures")
     .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
 // Load data 
-d3.csv("https://raw.githubusercontent.com/subilu84/Project-2/master/data/departure2.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/subilu84/refugees/master/static/data/departure2.csv", function(data) {
 
   console.log(data);
 

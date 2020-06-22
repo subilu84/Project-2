@@ -69,13 +69,13 @@
           .attr("fill", "#B0C4DE")
   
           .on("mousemove", function(d){
-              tooltip
+              return tooltip
                 .style("left", d3.event.pageX - 50 + "px")
                 .style("top", d3.event.pageY - 70 + "px")
                 .style("display", "inline-block")
                 .html(d.Total);
           })
-              .on("mouseout", function(d){ tooltip.style("display", "none");});
+              .on("mouseout", function(d){ return tooltip.style("display", "none");});
     
     svg.append("text")
             .attr("x", (width / 2))             
